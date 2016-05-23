@@ -5,12 +5,18 @@ class School(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Classroom(models.Model):
     school = models.ForeignKey(School)
 
     number = models.PositiveSmallIntegerField()
     capacity = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return '{}, Classroom {}'.format(self.school.name, self.number)
 
 
 class Student(models.Model):
@@ -30,4 +36,7 @@ class Student(models.Model):
     age = models.PositiveSmallIntegerField()
 
     def get_full_name(self):
-        return '{} {}'.format(first_name, last_name)
+        return '{} {}'.format(self.first_name, self.last_name)
+
+    def __str__(self):
+        return self.get_full_name()
