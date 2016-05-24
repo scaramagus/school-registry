@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/css/tether.min.css">
+        <title>School Registry</title>
+    </head>
+    <body>
+        <div id="main">
+        {% include '_js_vendor.html' %}
+        <script src="{% static 'js/app/main.js' %}"></script>
+    </body>
+</html>
