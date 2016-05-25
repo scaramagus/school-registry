@@ -2,9 +2,10 @@ import Mn from 'backbone.marionette';
 import { RootView } from './views.js';
 
 
+export const rootView = new RootView();
+
 const Application = Mn.Application.extend({
   onStart() {
-    const rootView = new RootView();
     rootView.render();
   },
 });

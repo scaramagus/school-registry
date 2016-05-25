@@ -1,7 +1,5 @@
 import Mn from 'backbone.marionette';
 
-import { SchoolCollection } from './models.js';
-
 const SchoolTableRow = Mn.View.extend({
   tagName: 'tr',
   template: '#school-table-row-template',
@@ -23,10 +21,6 @@ export const SchoolsTableView = Mn.View.extend({
       selector: 'tbody',
       replaceElement: true,
     },
-  },
-
-  initialize() {
-    this.collection = new SchoolCollection();
   },
 
   onAttach() {

@@ -1,5 +1,6 @@
 import Mn from 'backbone.marionette';
-import { SchoolsTableView } from './schools/views.js';
+
+import { schoolsTableView } from './schools/init.js';
 
 export const RootView = Mn.View.extend({
   el: '#main',
@@ -9,6 +10,6 @@ export const RootView = Mn.View.extend({
   },
 
   onRender() {
-    this.showChildView('root', new SchoolsTableView());
+    this.showChildView('root', schoolsTableView);
   },
 });
