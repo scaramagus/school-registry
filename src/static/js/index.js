@@ -1,1 +1,1 @@
-console.log("test");
+require('bootstrap/scss/bootstrap.scss');
