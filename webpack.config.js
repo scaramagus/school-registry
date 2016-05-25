@@ -16,20 +16,9 @@ module.exports = {
         },
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-      {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass'],
       },
-      {
-        test: /\.html$/,
-        loader: 'html',
-      },
     ],
-  },
-  htmlLoader: {
-    ignoreCustomFragments: [/\{\{.*?}}/],
   },
 };
