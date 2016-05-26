@@ -3,7 +3,7 @@
 </script>
 
 <script type="text/template" id="schools-table-template">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th>#</th>
             <th>Name</th>
@@ -17,4 +17,19 @@
     <td><%- id %></td>
     <td><%- name %></td>
     <td><%- address %></td>
+</script>
+
+<script type="text/template" id="school-form-template">
+    <div class="col-xs-4 col-xs-offset-1">
+        <input class="form-control" name="name" type="text" placeholder="Name" />
+    </div>
+    <div class="col-xs-4">
+        <input class="form-control" name="address" type="text" placeholder="Address" />
+    </div>
+    <input class="btn btn-md btn-primary" type="submit" value="Save" />
+</script>
+
+<script type="text/template" id="schools-template">
+    <table></table>
+    <form></form>
 </script>

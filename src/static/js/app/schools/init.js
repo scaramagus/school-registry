@@ -1,8 +1,8 @@
 import { SchoolCollection } from './models.js';
-import { SchoolsTableView } from './views.js';
+import { SchoolsView } from './views.js';
 
 const schools = new SchoolCollection();
 
-export const schoolsTableView = new SchoolsTableView({
+export const schoolsTableView = new SchoolsView({
   collection: schools,
 });
