@@ -1,6 +1,7 @@
 import Mn from 'backbone.marionette';
+import Radio from 'backbone.radio';
 
-import { schoolsTableView } from './schools/init.js';
+const rootChannel = Radio.channel('root');
 
 export const RootView = Mn.View.extend({
   el: '#main',
@@ -10,6 +11,8 @@ export const RootView = Mn.View.extend({
   },
 
   onRender() {
-    this.showChildView('root', schoolsTableView);
+    rootChannel.on('show:view', (view) => {
+      this.showChildView('root', view);
+    });
   },
 });

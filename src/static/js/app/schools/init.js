@@ -1,8 +1,20 @@
+import Mn from 'backbone.marionette';
+import Radio from 'backbone.radio';
+
 import { SchoolCollection } from './models.js';
-import { SchoolsView } from './views.js';
+import { SchoolsController } from './controller.js';
 
-const schools = new SchoolCollection();
+const routerChannel = Radio.channel('router');
 
-export const schoolsTableView = new SchoolsView({
-  collection: schools,
+export const schoolCollection = new SchoolCollection();
+
+
+export const SchoolsRouter = Mn.AppRouter.extend({
+  appRoutes: {
+    schools: 'listSchools',
+    'schools/:id': 'editSchool',
+  },
+  controller: SchoolsController,
 });
+
+routerChannel.on('schools:list', SchoolsController.listSchools);

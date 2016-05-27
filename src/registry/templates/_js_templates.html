@@ -14,17 +14,17 @@
 </script>
 
 <script type="text/template" id="school-table-row-template">
-    <td><%- id %></td>
+    <td><a href="#schools/<%- id %>"><%- id %></td>
     <td><%- name %></td>
     <td><%- address %></td>
 </script>
 
 <script type="text/template" id="school-form-template">
     <div class="col-xs-4 col-xs-offset-1">
-        <input class="form-control" name="name" type="text" placeholder="Name" />
+        <input class="form-control" name="name" type="text" placeholder="Name" value="<%- name %>" />
     </div>
     <div class="col-xs-4">
-        <input class="form-control" name="address" type="text" placeholder="Address" />
+        <input class="form-control" name="address" type="text" placeholder="Address" value="<%- address %>" />
     </div>
     <input class="btn btn-md btn-primary" type="submit" value="Save" />
 </script>

@@ -1,9 +1,7 @@
 import Mn from 'backbone.marionette';
-import Radio from 'backbone.radio';
 import _ from 'underscore';
 
-
-const schoolsChannel = Radio.channel('schools');
+import { SchoolModel } from './models.js';
 
 const SchoolTableRow = Mn.View.extend({
   tagName: 'tr',
@@ -36,7 +34,7 @@ const SchoolsTableView = Mn.View.extend({
   },
 });
 
-const SchoolFormView = Mn.View.extend({
+export const SchoolFormView = Mn.View.extend({
   template: '#school-form-template',
   tagName: 'form',
 
@@ -44,11 +42,14 @@ const SchoolFormView = Mn.View.extend({
     submit: 'onSubmit',
   },
 
+  model: new SchoolModel(),
+
   onSubmit(event) {
     event.preventDefault();
     const data = this.$el.serializeArray();
     const formData = _.object(_.pluck(data, 'name'), _.pluck(data, 'value'));
-    schoolsChannel.trigger('collection:add', formData);
+    this.trigger('school:save', formData);
+    this.$el.find(':input').val('');
   },
 });
 
@@ -70,6 +71,11 @@ export const SchoolsView = Mn.View.extend({
     this.showChildView('table', new SchoolsTableView({
       collection: this.collection,
     }));
-    this.showChildView('form', new SchoolFormView());
+    const formView = new SchoolFormView();
+    this.showChildView('form', formView);
+
+    formView.on('school:save', (data) => {
+      this.collection.create(data, { wait: true });
+    });
   },
 });
