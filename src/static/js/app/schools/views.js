@@ -6,6 +6,13 @@ import { SchoolModel } from './models.js';
 const SchoolTableRow = Mn.View.extend({
   tagName: 'tr',
   template: '#school-table-row-template',
+  events: {
+    'click .delete-item': 'deleteItem',
+  },
+  deleteItem(event) {
+    event.preventDefault();
+    this.model.destroy();
+  },
 });
 
 const SchoolsTableBodyView = Mn.CollectionView.extend({
